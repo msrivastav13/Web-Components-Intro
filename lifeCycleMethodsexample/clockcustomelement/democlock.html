@@ -6,8 +6,12 @@
     <head> </head>
 
     <body>
-        <c-clock size="100" color="red" bgColor="black"> </c-clock>
-        <c-clock size="50" color="yellow" bgColor="red"> </c-clock>
+        <c-clock size="100" color="red" bgColor="black">
+            <span slot="title" style="color:white; font-size:20px">Big Clock</span></c-clock
+        >
+        <c-clock size="50" color="yellow" bgColor="red">
+            <span slot="title">Small Clock</span></c-clock
+        >
     </body>
     <script src="clock.js"></script>
 </html>

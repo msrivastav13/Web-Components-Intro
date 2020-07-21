@@ -1,10 +1,10 @@
 class Clock extends HTMLElement {
-  timer;
+    timer;
 
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    const innerHTML = `
+        const innerHTML = `
          <style>
  
          .clk {
@@ -26,41 +26,41 @@ class Clock extends HTMLElement {
          <slot name="title"> <p class="clk"> default title </p> </slot>
          </div>`;
 
-    const shadowDom = this.attachShadow({ mode: "open" });
-    shadowDom.innerHTML = innerHTML;
-  }
-
-  updateTime(k) {
-    if (k < 10) {
-      return "0" + k;
-    } else {
-      return k;
+        const shadowDom = this.attachShadow({ mode: 'open' });
+        shadowDom.innerHTML = innerHTML;
     }
-  }
 
-  currentTime() {
-    var date = new Date(); /* creating object of Date class */
-    var hour = date.getHours();
-    var min = date.getMinutes();
-    var sec = date.getSeconds();
-    hour = this.updateTime(hour);
-    min = this.updateTime(min);
-    sec = this.updateTime(sec);
-    this.shadowRoot.getElementById("clock").innerText =
-      hour + " : " + min + " : " + sec; /* adding time to the div */
-  }
+    updateTime(k) {
+        if (k < 10) {
+            return '0' + k;
+        } else {
+            return k;
+        }
+    }
 
-  connectedCallback() {
-    this.currentTime();
-    this.timer = setInterval(() => {
-      this.currentTime();
-    }, 1000);
-  }
+    currentTime() {
+        var date = new Date(); /* creating object of Date class */
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        var sec = date.getSeconds();
+        hour = this.updateTime(hour);
+        min = this.updateTime(min);
+        sec = this.updateTime(sec);
+        this.shadowRoot.getElementById('clock').innerText =
+            hour + ' : ' + min + ' : ' + sec; /* adding time to the div */
+    }
 
-  disconnectedCallback() {
-    clearInterval(this.timer);
-    console.log("disconnected from DOM");
-  }
+    connectedCallback() {
+        this.currentTime();
+        this.timer = setInterval(() => {
+            this.currentTime();
+        }, 1000);
+    }
+
+    disconnectedCallback() {
+        clearInterval(this.timer);
+        console.log('disconnected from DOM');
+    }
 }
 
-customElements.define("c-clock", Clock);
+customElements.define('c-clock', Clock);
