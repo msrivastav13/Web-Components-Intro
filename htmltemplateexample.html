@@ -1,0 +1,36 @@
+<!-- Example that shows how to work with HTML templates-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .button {
+            background-color: #1798c1;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<template id="my-paragraph">
+    <p>My paragraph</p>
+</template>
+<button onclick="renderParagraph();" class="button">Show Paragraph</button>
+
+<script type="text/javascript">
+    function renderParagraph() {
+        let template = document.getElementById("my-paragraph");
+        let templateContent = template.content;
+        document.body.appendChild(templateContent);
+    }
+</script>
+
+</html>
+
